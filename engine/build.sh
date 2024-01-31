@@ -13,8 +13,9 @@ assembly="engine"
 compilerFlags="-g -shared -fdeclspec -fPIC"
 # -fms-extensions 
 # -Wall -Werror
+includeFlags="-Isrc"
 linkerFlags="-lvulkan -lxcb -lX11 -lX11-xcb -lxkbcommon -L/usr/X11R6/lib"
 defines="-D_DEBUG -DKEXPORT"
 
 echo "Building $assembly..."
-clang $cFilenames $compilerFlags -o ../bin/lib$assembly.so $defines $linkerFlags
+clang $cFilenames $compilerFlags -o ../bin/lib$assembly.so $defines $includeFlags $linkerFlags
