@@ -7,17 +7,20 @@
 #include <string.h>
 #include <stdarg.h>
 
-b8 initialize_logging() {
+b8 initialize_logging()
+{
     // TODO: create log file
     return TRUE;
 }
 
-void shutdown_logging() {
+void shutdown_logging()
+{
     // TODO: cleanup logging/write queued entries.
 }
 
-void log_output(log_level level, const char *message, ...) {
-    const char *level_strings[6] = { "[FATAL]: ", "[ERROR]: ", "[WARN]: ", "[INFO]: ", "[DEBUG]: ", "[TRACE]: " };
+void log_output(log_level level, const char *message, ...)
+{
+    const char *const level_strings[6] = { "[FATAL]: ", "[ERROR]: ", "[WARN]: ", "[INFO]: ", "[DEBUG]: ", "[TRACE]: " };
     const b8 is_error = level < LOG_LEVEL_WARN;
 
     // 32k char limit
@@ -43,7 +46,8 @@ void log_output(log_level level, const char *message, ...) {
     }
 }
 
-void report_assertion_failure(const char *expression, const char *message, const char *file, i32 line) {
+void report_assertion_failure(const char *expression, const char *message, const char *file, i32 line)
+{
     log_output(
         LOG_LEVEL_FATAL,
         "Assertion Failure: %s, message: '%s', in file: %s, line: %d\n",
