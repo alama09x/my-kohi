@@ -4,6 +4,7 @@
 #include "logger.h"
 
 #include "platform/platform.h"
+#include "core/kmemory.h"
 
 typedef struct application_state {
     game *game_inst;
@@ -66,6 +67,7 @@ KAPI b8 application_create(game *game_inst)
 
 KAPI b8 application_run()
 {
+    KINFO(get_memory_usage_str());
     while (app_state.is_running) {
         app_state.is_running = platform_pump_messages(&app_state.platform);
 
